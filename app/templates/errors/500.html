@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - Passwordless Digital Wallet{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content">
+        <div class="error-icon">⚠️</div>
+        <h1 class="error-code">500</h1>
+        <h2>Internal Server Error</h2>
+        <p>Something went wrong on our end. Our team has been notified and we're working to fix it.</p>
+        <div class="error-actions">
+            <a href="{{ url_for('main.index') }}" class="btn btn-primary btn-lg">
+                <span>🏠</span> Go Home
+            </a>
+            <button onclick="location.reload()" class="btn btn-secondary btn-lg">
+                <span>🔄</span> Try Again
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

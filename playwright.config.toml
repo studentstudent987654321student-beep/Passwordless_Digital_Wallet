@@ -1,0 +1,10 @@
+# Playwright configuration
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.playwright]
+browsers = ["chromium", "firefox", "webkit"]
+headless = true
+slow_mo = 0
+base_url = "https://localhost"
+ignore_https_errors = true

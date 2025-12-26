@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Passwordless Digital Wallet using WebAuthn (FIDO2) - Secure, privacy-preserving authentication for UK Fintech">
+    <meta name="keywords" content="passwordless, WebAuthn, FIDO2, digital wallet, biometric, UK fintech, GDPR">
+    <meta name="author" content="UK Fintech Research Project">
+    
+    <title>{% block title %}Passwordless Digital Wallet{% endblock %}</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="{{ url_for('main.index') }}">🔐 Passwordless Wallet</a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="nav-menu" id="nav-menu">
+                {% if session.get('authenticated') %}
+                    <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+                    <a href="{{ url_for('main.about') }}">About</a>
+                    <button id="logout-btn" class="btn btn-secondary">Logout</button>
+                {% else %}
+                    <a href="{{ url_for('main.index') }}">Home</a>
+                    <a href="{{ url_for('main.about') }}">About</a>
+                    <a href="{{ url_for('main.login_page') }}" class="btn btn-secondary">Login</a>
+                    <a href="{{ url_for('main.register_page') }}" class="btn btn-primary">Get Started</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>🔐 Passwordless Wallet</h3>
+                    <p>A research project demonstrating secure, passwordless authentication for UK fintech applications using WebAuthn (FIDO2) standard.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                        <li><a href="{{ url_for('main.about') }}">About</a></li>
+                        {% if not session.get('authenticated') %}
+                        <li><a href="{{ url_for('main.login_page') }}">Login</a></li>
+                        <li><a href="{{ url_for('main.register_page') }}">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Security</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Standards</h4>
+                    <ul>
+                        <li><a href="https://www.w3.org/TR/webauthn-2/" target="_blank">W3C WebAuthn</a></li>
+                        <li><a href="https://fidoalliance.org/" target="_blank">FIDO Alliance</a></li>
+                        <li><a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/" target="_blank">UK GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 Passwordless Digital Wallet - UK Fintech Research Project</p>
+                <div class="footer-compliance">
+                    <span class="compliance-badge">GDPR Compliant</span>
+                    <span class="compliance-badge">FIDO2 Certified</span>
+                    <span class="compliance-badge">UK DPA 2018</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_scripts %}{% endblock %}
+    
+    <script>
+        function toggleNav() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

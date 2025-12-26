@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Passwordless Digital Wallet{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="container">
+        <div class="dashboard-header animate-fade-in">
+            <h1>Your Wallet 💼</h1>
+            <p>Welcome back, <strong>{{ user_email }}</strong></p>
+        </div>
+        
+        <div id="error-message" class="alert alert-error hidden"></div>
+        <div id="success-message" class="alert alert-success hidden"></div>
+        
+        <!-- Balance Card -->
+        <div class="balance-card animate-fade-in delay-100">
+            <div class="balance-label">Available Balance</div>
+            <div class="balance-amount" id="balance-amount">
+                <span class="loading-spinner"></span>
+            </div>
+        </div>
+        
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Deposit Card -->
+            <div class="action-card animate-fade-in delay-200">
+                <h3><span>💵</span> Deposit Funds</h3>
+                <form id="deposit-form">
+                    <div class="form-group">
+                        <label for="deposit-amount">Amount (GBP)</label>
+                        <input type="number" id="deposit-amount" step="0.01" min="0.01" max="10000" required
+                               placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label for="deposit-description">Description (optional)</label>
+                        <input type="text" id="deposit-description" placeholder="e.g., Salary, Savings">
+                    </div>
+                    <button type="submit" class="btn btn-success w-full" id="deposit-btn">
+                        <span>👆</span> Confirm with Biometrics
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Transfer Card -->
+            <div class="action-card animate-fade-in delay-300">
+                <h3><span>📤</span> Transfer Funds</h3>
+                <form id="transfer-form">
+                    <div class="form-group">
+                        <label for="transfer-recipient">Recipient Email</label>
+                        <input type="email" id="transfer-recipient" required 
+                               placeholder="recipient@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer-amount">Amount (GBP)</label>
+                        <input type="number" id="transfer-amount" step="0.01" min="0.01" required
+                               placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer-description">Description (optional)</label>
+                        <input type="text" id="transfer-description" placeholder="e.g., Rent, Gift">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full" id="transfer-btn">
+                        <span>👆</span> Confirm with Biometrics
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Transactions Card -->
+        <div class="transactions-card animate-fade-in delay-400">
+            <h3><span>📋</span> Recent Transactions</h3>
+            <div id="transactions-list" class="transaction-list">
+                <div class="no-transactions">
+                    <div class="loading-spinner"></div>
+                    <p>Loading transactions...</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="quick-actions animate-fade-in delay-500">
+            <a href="#" class="btn btn-secondary" id="refresh-btn">
+                <span>🔄</span> Refresh Balance
+            </a>
+            <a href="{{ url_for('main.about') }}" class="btn btn-secondary">
+                <span>ℹ️</span> About WebAuthn
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

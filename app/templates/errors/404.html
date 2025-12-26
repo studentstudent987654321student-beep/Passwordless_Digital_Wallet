@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - Passwordless Digital Wallet{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content">
+        <div class="error-icon">🔍</div>
+        <h1 class="error-code">404</h1>
+        <h2>Page Not Found</h2>
+        <p>The page you're looking for doesn't exist or has been moved.</p>
+        <div class="error-actions">
+            <a href="{{ url_for('main.index') }}" class="btn btn-primary btn-lg">
+                <span>🏠</span> Go Home
+            </a>
+            <a href="javascript:history.back()" class="btn btn-secondary btn-lg">
+                <span>↩️</span> Go Back
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

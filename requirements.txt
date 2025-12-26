@@ -1,0 +1,31 @@
+# Flask Framework
+Flask>=3.0.0
+Flask-SQLAlchemy>=3.1.1
+Flask-Migrate>=4.0.5
+Flask-Session>=0.6.0
+Flask-Limiter>=3.5.0
+Flask-CORS>=4.0.0
+Werkzeug>=3.0.1
+
+# WebAuthn / FIDO2
+fido2>=1.1.3
+
+# Database
+SQLAlchemy>=2.0.36
+
+# Security & SSL
+cryptography>=41.0.7
+pyopenssl>=23.3.0
+python-dotenv>=1.0.0
+itsdangerous>=2.1.2
+
+# Utilities
+python-dateutil>=2.8.2
+
+# Server (Windows-compatible)
+waitress>=2.1.2
+
+# Testing (optional - install separately if needed)
+# pytest==7.4.3
+# pytest-flask==1.3.0
+# pytest-cov==4.1.0

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Passwordless Digital Wallet{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card animate-fade-in">
+        <div class="auth-header">
+            <div class="auth-icon">🔑</div>
+            <h1>Welcome Back</h1>
+            <p>Login with your biometric authenticator</p>
+        </div>
+        
+        <div id="error-message" class="alert alert-error hidden"></div>
+        <div id="success-message" class="alert alert-success hidden"></div>
+        
+        <form id="login-form" class="auth-form">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required 
+                       placeholder="you@example.com" autocomplete="email">
+            </div>
+            
+            <button type="submit" class="webauthn-btn" id="login-btn">
+                <span class="spinner"></span>
+                <span class="btn-text">👆 Login with Biometrics</span>
+            </button>
+        </form>
+        
+        <div class="auth-footer">
+            <p>Don't have an account? <a href="{{ url_for('main.register_page') }}">Register here</a></p>
+        </div>
+        
+        <div class="info-box">
+            <h4>🔑 How It Works</h4>
+            <p>You'll be prompted to use your device's biometric authentication (Touch ID, Face ID, or Windows Hello). Your biometric data stays on your device and is never transmitted to our servers.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Too Many Requests - Passwordless Digital Wallet{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content">
+        <div class="error-icon">⏳</div>
+        <h1 class="error-code">429</h1>
+        <h2>Too Many Requests</h2>
+        <p>You've made too many requests in a short period. Please wait a moment before trying again.</p>
+        <p class="error-details">This is a security measure to protect our service and your account.</p>
+        <div class="error-actions">
+            <a href="{{ url_for('main.index') }}" class="btn btn-primary btn-lg">
+                <span>🏠</span> Go Home
+            </a>
+            <button onclick="setTimeout(() => location.reload(), 30000)" class="btn btn-secondary btn-lg">
+                <span>⏱️</span> Wait & Retry
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

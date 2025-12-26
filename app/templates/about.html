@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}About - Passwordless Digital Wallet{% endblock %}
+
+{% block content %}
+<section class="about-hero">
+    <div class="container">
+        <h1 class="animate-fade-in">About This <span class="gradient-text">Project</span></h1>
+        <p class="animate-fade-in delay-100">A research-driven passwordless authentication system for UK fintech applications</p>
+    </div>
+</section>
+
+<section class="about-content">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-card animate-fade-in">
+                <h3><span>📚</span> Project Overview</h3>
+                <p>
+                    This is a research project demonstrating the practical implementation of 
+                    passwordless authentication for UK fintech applications using the WebAuthn (FIDO2) 
+                    standard with Flask.
+                </p>
+                <p>
+                    The system eliminates traditional password vulnerabilities by leveraging 
+                    device-bound public-key cryptography and biometric authentication.
+                </p>
+            </div>
+            
+            <div class="about-card animate-fade-in delay-100">
+                <h3><span>🛠️</span> Technology Stack</h3>
+                <div class="tech-stack">
+                    <div class="tech-item"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (WebAuthn API)</div>
+                    <div class="tech-item"><strong>Backend:</strong> Flask (Python 3.11), python-fido2</div>
+                    <div class="tech-item"><strong>Database:</strong> SQLite / PostgreSQL with SQLAlchemy</div>
+                    <div class="tech-item"><strong>Standards:</strong> W3C WebAuthn Level 2, FIDO2</div>
+                </div>
+            </div>
+            
+            <div class="about-card animate-fade-in delay-200">
+                <h3><span>🔒</span> Security Features</h3>
+                <ul class="feature-list">
+                    <li>✅ Public-key cryptography (private keys never leave the device)</li>
+                    <li>✅ Biometric authentication (Touch ID, Face ID, Windows Hello)</li>
+                    <li>✅ Phishing-resistant authentication (origin-bound credentials)</li>
+                    <li>✅ Replay attack prevention via single-use challenges</li>
+                    <li>✅ Step-up authentication for sensitive transactions</li>
+                    <li>✅ Comprehensive immutable audit logging</li>
+                </ul>
+            </div>
+            
+            <div class="about-card animate-fade-in delay-300">
+                <h3><span>🏛️</span> Privacy & Compliance</h3>
+                <ul class="feature-list">
+                    <li>✅ UK GDPR compliant</li>
+                    <li>✅ Data Protection Act 2018 compliant</li>
+                    <li>✅ Privacy by Design principles</li>
+                    <li>✅ Biometric data never transmitted or stored</li>
+                    <li>✅ Data minimization (only essential data)</li>
+                    <li>✅ Right to erasure (account deletion)</li>
+                </ul>
+            </div>
+            
+            <div class="about-card animate-fade-in delay-400">
+                <h3><span>🎯</span> Research Objectives</h3>
+                <ul class="feature-list">
+                    <li>1️⃣ Demonstrate feasibility of passwordless auth in UK fintech</li>
+                    <li>2️⃣ Evaluate usability using System Usability Scale (SUS)</li>
+                    <li>3️⃣ Measure security against phishing, replay attacks</li>
+                    <li>4️⃣ Assess performance: latency and throughput</li>
+                    <li>5️⃣ Validate compliance with UK GDPR and DPA 2018</li>
+                </ul>
+            </div>
+            
+            <div class="about-card animate-fade-in delay-500">
+                <h3><span>🔗</span> References & Standards</h3>
+                <ul class="feature-list">
+                    <li>📄 <a href="https://www.w3.org/TR/webauthn-2/" target="_blank">W3C WebAuthn Level 2</a></li>
+                    <li>📄 <a href="https://fidoalliance.org/specifications/" target="_blank">FIDO Alliance Specs</a></li>
+                    <li>📄 <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/" target="_blank">ICO UK GDPR Guide</a></li>
+                    <li>📄 <a href="https://www.legislation.gov.uk/ukpga/2018/12/contents/enacted" target="_blank">Data Protection Act 2018</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="about-card disclaimer animate-fade-in mt-4">
+            <h3><span>⚠️</span> Research Disclaimer</h3>
+            <p>
+                This is a research prototype developed for academic purposes. While built to 
+                production-grade standards, it should not be used for real financial transactions 
+                without additional security hardening and regulatory approval.
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

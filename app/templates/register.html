@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Passwordless Digital Wallet{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card animate-fade-in">
+        <div class="auth-header">
+            <div class="auth-icon">🔐</div>
+            <h1>Create Your Wallet</h1>
+            <p>Register with your biometric authenticator</p>
+        </div>
+        
+        <div id="error-message" class="alert alert-error hidden"></div>
+        <div id="success-message" class="alert alert-success hidden"></div>
+        
+        <form id="register-form" class="auth-form">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required 
+                       placeholder="you@example.com" autocomplete="email">
+            </div>
+            
+            <div class="form-group">
+                <label for="display-name">Display Name</label>
+                <input type="text" id="display-name" name="display_name" required 
+                       placeholder="Your Name" autocomplete="name">
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="gdpr-consent" required>
+                <label for="gdpr-consent">
+                    I consent to data processing in accordance with <a href="#" target="_blank">UK GDPR</a> and the <a href="#" target="_blank">Privacy Policy</a>
+                </label>
+            </div>
+            
+            <button type="submit" class="webauthn-btn" id="register-btn">
+                <span class="spinner"></span>
+                <span class="btn-text">🔑 Register with Biometrics</span>
+            </button>
+        </form>
+        
+        <div class="auth-footer">
+            <p>Already have an account? <a href="{{ url_for('main.login_page') }}">Login here</a></p>
+        </div>
+        
+        <div class="info-box">
+            <h4>🔐 Privacy Guarantee</h4>
+            <ul>
+                <li>Your biometric data <strong>never leaves your device</strong></li>
+                <li>We only store a public key, not your fingerprint or face data</li>
+                <li>Full compliance with UK GDPR and Data Protection Act 2018</li>
+                <li>You can delete your account and all data at any time</li>
+                <li>No tracking, no third-party analytics</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}
